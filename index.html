@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player - HTML, CSS and JavaScript</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video src="./video.mp4" width="100%" height="auto" id="video"></video><br>
+        </div>
+        <div class="progress-container">
+            <span id="currentTime"></span>&nbsp;<input type="range" name="seekbar" id="seekbar" min="0" max="100" style="width: 100%;">&nbsp;<span id="videoDuration"></span>
+        </div>
+        <br>
+        <div style="margin: auto; display: block;">
+            <div class="controllers">
+                <div class="play-controllers">
+                    <button class="btn" id="rewindBtn"><span class="material-icons">fast_rewind</span></button>
+                    <button class="btn" id="playBtn"><span class="material-icons">play_circle</span></button>
+                    <button class="btn" id="forwardBtn"><span class="material-icons">fast_forward</span></button>
+                </div>
+                <div class="volume-controllers">
+                    <button class="btn" id="muteBtn"><span class="material-icons">volume_off</span></button>
+                    <span class="material-icons" id="volume_icon">volume_up</span>
+                    <input type="range" name="volume" id="volume" min="0" max="100" style="width: 100%;">
+                    <span id="volumePercent"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
