@@ -10,10 +10,11 @@ let muteBtn = document.getElementById("muteBtn");
 let seekbar = document.getElementById("seekbar");
 let rewindBtn = document.getElementById("rewindBtn");
 let forwardBtn = document.getElementById("forwardBtn");
+let repeatBtn = document.getElementById("repeatBtn");
 
 // Set the seekbar value to current time of the video
 seekbar.value = video.currentTime;
-currentTime.innerHTML = '0:0:0' // Set the initial value of current time to 0:0:0
+currentTime.innerHTML = '00:00:00' // Set the initial value of current time to 00:00:00
 
 video.addEventListener("loadedmetadata", () => {
     const duration = Math.floor(video.duration); // Get the video duration
@@ -21,7 +22,7 @@ video.addEventListener("loadedmetadata", () => {
     const hours = Math.floor(duration / 3600);
     const minutes = Math.floor((duration - (hours * 3600)) / 60);
     const seconds = duration - (hours * 3600) - (minutes * 60);
-    videoDuration.innerHTML = `${hours}:${minutes}:${seconds}`;
+    videoDuration.innerHTML = `${hours<10?`0${hours}`:`${hours}`}:${minutes<10?`0${minutes}`:`${minutes}`}:${seconds<10?`0${seconds}`:`${seconds}`}`;
 
     // Set the initial video volume to 0.5 (50%)
     video.volume = 0.5;
@@ -39,7 +40,7 @@ playBtn.addEventListener("click", () => {
             const hours = Math.floor(duration / 3600);
             const minutes = Math.floor((duration - (hours * 3600)) / 60);
             const seconds = duration - (hours * 3600) - (minutes * 60);
-            currentTime.innerHTML = `${hours}:${minutes}:${seconds}`;
+            currentTime.innerHTML = `${hours<10?`0${hours}`:`${hours}`}:${minutes<10?`0${minutes}`:`${minutes}`}:${seconds<10?`0${seconds}`:`${seconds}`}`;
             // Update the seekbar value
             seekbar.value = (video.currentTime / video.duration) * 100;
         })
@@ -76,6 +77,17 @@ forwardBtn.addEventListener("mousedown", () => {
 })
 forwardBtn.addEventListener("mouseup", () => {
    clearInterval(interval)
+})
+
+// Loop the video
+repeatBtn.addEventListener('click', (e) => {
+    if (!video.loop) {
+        video.loop = true;
+        e.target.innerHTML = 'repeat_one';
+    } else {
+        video.loop = false;
+        e.target.innerHTML = 'repeat';
+    }
 })
 
 // Switch to the particular timestamp of the video on seekbar changes
