@@ -86,14 +86,25 @@ video:-webkit-full-screen::-webkit-media-controls-enclosure {
 }
 
 #playBtn::before {
-  content: "Play Video"; /* Tooltip text */
+  content: "Play/Pause Video"; /* Tooltip text */
 }
+
 #rewindBtn::before {
   content: "Rewind"; /* Tooltip text */
 }
+
 #forwardBtn::before {
   content: "Forward"; /* Tooltip text */
 }
+
+#repeatBtn::before {
+  content: "Repeat"; /* Tooltip text */
+}
+
+#muteBtn::before {
+  content: "Mute/Unmute Video"; /* Tooltip text */
+}
+
 
 .btn:hover::before {
   opacity: 1; /* Show the tooltip on hover */
